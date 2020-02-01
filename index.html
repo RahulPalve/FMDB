@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>FMDB</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body onload="selectyear()">
+    
+    <div class="navpanel">
+        <h1>FMDB</h1>
+        a simple movie database<br>
+        <input id="search" type="text" placeholder="search movie title..">
+        <button onclick="getS()">Search</button>
+    </div>
+
+    <div class="as">
+        <h2>Advance Search</h2>
+        Title : <input id="title" type="text"><br>
+
+        Type :  <select id="mtype">
+                    <option value="movie">Movie</option>
+                    <option value="series">Series</option>
+                    <option value="episode">Episode</option>
+                </select><br>
+        Year : <select id="year"> </select><br>
+            
+               <button onclick="getAS()">Search</button>
+    </div>
+    <div id="Response">
+        
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+</body>
+
+</html>
