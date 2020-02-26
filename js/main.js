@@ -17,11 +17,8 @@ function getS(pageNo=1){
       });
 }
 
-function getAS(){
-    var title=document.getElementById("title").value;
-    var mtype=document.getElementById("mtype").value;
-    var year=document.getElementById("year").value;
-    
+function getAS(title=document.getElementById("title").value, mtype=document.getElementById("mtype").value, year=document.getElementById("year").value){
+
      var apicl="http://www.omdbapi.com/?t="+encodeURI(title)+"&type="+mtype+"&y="+year+"&callback=?&apikey=154d259c";
     
      $.getJSON(apicl, function (result) {
@@ -39,14 +36,18 @@ function displayJSON(obj){
     }
     else{
         if(obj.hasOwnProperty("Search")){
-            var str="<h2>Search Results..</h2><br>";
+            res.innerHTML="<h2>Search Results..</h2><br>";
 
-            for(i=0; i<Object.keys(obj.Search).length; i++)
-                str=str+obj.Search[i].Title+"<img src="+obj.Search[i].Poster+" width=150px height=200px><br>";
-            
+            for(i=0; i<Object.keys(obj.Search).length; i++){
+                var sr=document.createElement("div");
+                sr.className="listElement";
+                sr.setAttribute("onclick","getAS("+'"'+obj.Search[i].Title+'"'+","+'"'+obj.Search[i].Type+'"'+","+'"'+ obj.Search[i].Year+'"'+")");
+                sr.innerHTML=obj.Search[i].Title+"<img src="+obj.Search[i].Poster+" width=150px height=200px><br>";
+                res.appendChild(sr);
+            }
             pageNo++;
-            str=str+"<button onclick=getS("+pageNo+")>Next</button>";
-            res.innerHTML=str;
+            sr.innerHTML=sr.innerHTML+"<button onclick=getS("+pageNo+")>Next</button>";
+        
         }
         
         else{
