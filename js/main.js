@@ -1,8 +1,12 @@
 function selectyear(){
-    var s= document.getElementById("year");
+    var curr = new Date().getFullYear(),
+    select = document.getElementById("year");
 
-    for(var i=new Date().getFullYear(); i> 1935 ;i--){
-        s.innerHTML=s.innerHTML+"<option value=i>"+i+"</option>";
+    for (var i = curr; i>=1940; i--){
+        var opt = document.createElement("option");
+        opt.value = i;
+        opt.innerHTML = i;
+        select.appendChild(opt);
     }
 }
 
@@ -36,23 +40,30 @@ function displayJSON(obj){
     }
     else{
         if(obj.hasOwnProperty("Search")){
-            res.innerHTML="<h2>Search Results..</h2><br>";
+            res.innerHTML=`Results for <b>"${document.getElementById("search").value}"</b>...<br>`;
 
             for(i=0; i<Object.keys(obj.Search).length; i++){
-                var sr=document.createElement("div");
-                sr.className="listElement";
-                sr.setAttribute("onclick","getAS("+'"'+obj.Search[i].Title+'"'+","+'"'+obj.Search[i].Type+'"'+","+'"'+ obj.Search[i].Year+'"'+")");
-                sr.innerHTML=obj.Search[i].Title+"<img src="+obj.Search[i].Poster+" width=150px height=200px><br>";
-                res.appendChild(sr);
+                var le=document.createElement("div");
+                le.className="listElement";
+                le.setAttribute("onclick","getAS("+'"'+obj.Search[i].Title+'"'+","+'"'+obj.Search[i].Type+'"'+","+'"'+ obj.Search[i].Year+'"'+")");
+
+                le.innerHTML=` 
+                    <h2>${obj.Search[i].Title} </h2>
+                    <b>( ${obj.Search[i].Year} )</b> <br>
+                    <img src="${obj.Search[i].Poster}">
+                `;
+
+              //  le.innerHTML=obj.Search[i].Title+"<br> Year : "+obj.Search[i].Year+"<img lec="+obj.Search[i].Poster+" width=150px height=200px><br>";
+                res.appendChild(le);
             }
             pageNo++;
-            sr.innerHTML=sr.innerHTML+"<button onclick=getS("+pageNo+")>Next</button>";
+            res.innerHTML=res.innerHTML+"<br><button onclick=getS("+pageNo+")>Next</button>";
         
         }
         
         else{
             res.innerHTML=
-            "<b>Title:</b>"+obj.Title+
+            "<b>"+obj.Title+"</b>"+
             "<br><img src="+obj.Poster+">"+
             "<br><b>Year:</b>"+obj.Year +
             "<br><b>Rated:</b>"+obj.Rated +

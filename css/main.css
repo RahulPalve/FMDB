@@ -1,0 +1,65 @@
+
+body{
+    font-family:  "segoe ui","trebuchet MS","Lucida Sans Unicode","Lucida Sans",Sans-Serif;
+    font-size: 20px;
+    color: #252627;
+    margin: 10px;
+    border-top: 5px solid #4B88A2;
+    background-color: #FFF9FB;
+}
+div{
+    margin: 10px;
+}
+.navpanel{
+    text-align: center;
+    /*border: 3px solid #26a6b7;*/
+    padding: 10px;
+    
+
+}
+.Title{
+    
+    color: #BB0A21;;
+    font-size: 50px;
+}
+    
+input, button, select{
+    height: 30px;
+    margin: 5px;
+    font-family: inherit;
+    font-size: inherit;
+    
+}
+.as{
+    float: left;
+    max-width: 30%;
+   /* border: 3px solid #26a6b7;*/
+    overflow: hidden;
+    position: relative;
+}
+.Response{
+    overflow: hidden;
+    max-width: 50%;
+    position: relative;
+    padding: 10px;
+}
+.listElement{
+    font-size: 15px;
+    float: left;
+    width: 250px;
+    height: 420px;
+    text-align: center;
+    overflow: hidden;
+}
+.listElement img{
+    width: 225px;
+    height: 330px;
+    margin: 10px;
+    border-radius: 5%;
+}
+
+@media screen and (max-width: 800px) {
+    .Response.as {
+      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+  }

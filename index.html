@@ -2,13 +2,14 @@
 <head>
     <title>FMDB</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body onload="selectyear()">
     
     <div class="navpanel">
-        <h1>FMDB</h1>
-        a simple movie database<br>
+        <div class="Title">FMDB</div>
+        FREE MOVIE DATABASE<br>
         <input id="search" type="text" placeholder="search movie title..">
         <button onclick="getS()">Search</button>
     </div>
@@ -26,7 +27,7 @@
             
                <button onclick="getAS()">Search</button>
     </div>
-    <div id="Response">
+    <div id="Response" class="Response">
         
     </div>
 
